@@ -1,4 +1,33 @@
 
+# class Dashboard:
+#     '''
+#     Dashboard class. It sets the initial dashboard by choosing the rounds number
+#     and manage the elements (rock, paper, scissors) display
+#     '''
+
+# 	# scores = {"computer": 0, "player": 0}
+
+#     def __init__(self, rounds, player_name):
+#         self.rounds = rounds
+#         self.player_name = player_name
+        
+#     def print(self, element):
+#         print(f"Paiting... {element}")
+
+def validate_round_number(number_value):
+    '''
+    It validates whether the parameter is a number or not, and if the number is greater than 15
+    '''
+    try:
+        num = int(number_value)
+        if num > 15:
+            raise ValueError(f"The number of rounds must be less than 15. You set {num}")
+    except ValueError as e:
+        print(f"Invalid data: {e}, please try again.\n")
+        return False
+    
+    return True
+
 
 def main():
     '''
@@ -14,7 +43,15 @@ def main():
     print('GOOD LUCK!')
     print('-------------------------------')
     player_name = input('Please enter your name: ')
-    print(player_name)
+    print("Username: ", player_name)
+    while True:
+        round_numbers = input('Please enter a number of rounds (max. 15): ')
+        
+        if validate_round_number(round_numbers):
+            print(f"Number of rounds: {round_numbers}")
+            break
+
+
    
 
 main()
