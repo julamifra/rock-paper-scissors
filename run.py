@@ -14,6 +14,20 @@
 #     def print(self, element):
 #         print(f"Paiting... {element}")
 
+
+def get_rounds():
+    rounds = 0
+
+    while True:
+        rounds = input('Please enter a number of rounds (max. 15): ')
+    
+        if validate_round_number(rounds):
+            print(f"Number of rounds: {rounds}")
+            break
+
+    return rounds
+
+
 def validate_round_number(number_value):
     '''
     It validates whether the parameter is a number or not, and if the number is greater than 15
@@ -42,17 +56,12 @@ def main():
     print('s: scissor')
     print('GOOD LUCK!')
     print('-------------------------------')
+
     player_name = input('Please enter your name: ')
     print("Username: ", player_name)
-    while True:
-        round_numbers = input('Please enter a number of rounds (max. 15): ')
-        
-        if validate_round_number(round_numbers):
-            print(f"Number of rounds: {round_numbers}")
-            break
 
+    rounds = get_rounds()
 
-   
 
 main()
 
