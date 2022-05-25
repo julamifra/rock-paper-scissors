@@ -110,7 +110,17 @@ def print_element(element, name):
         print('-------XX---XX---------')
 
 def print_final_score(game):
-    print('-------XX---XX---------')
+    """
+    """
+
+    computer_score = game.score['computer']
+    player_score = game.score['player']
+
+    print('|||||||||||||||||||||||||||||||')
+    print(f"FINAL SCORE -> Computer: {computer_score}, You: {player_score}")
+    print(f"{game.player_name if int(player_score) > int(computer_score) else 'Computer'} win!! ")
+    print('|||||||||||||||||||||||||||||||')
+
 
 
 
@@ -126,9 +136,9 @@ def play(game):
 
     while int(game.current_round) <= int(game.rounds):
         print('|||||||||||||||||||||||||||||||')
-        print("ROUND: ", game.get_current_round())
         score = game.get_score()
         print(f"SCORE -> Computer: {game.score['computer']}, {game.player_name}: {game.score['player']}")
+        print("NEXT ROUND: ", game.get_current_round())
         print('|||||||||||||||||||||||||||||||')
 
         print('Choose one element to play: R(rock), P(paper) or S(scissor)')
@@ -144,12 +154,13 @@ def play(game):
             result = get_winner(computer_element, player_element)
             if result == "equal":
                 print("Who win? Draw!")
+                # break
             else:
                 print(f"Who win? {'computer' if result == 'computer' else game.player_name }")
                 game.increment_score(result)
                 game.increment_current_round()
 
-    print_final_score(game)       
+    print_final_score(game)
 
 
 
