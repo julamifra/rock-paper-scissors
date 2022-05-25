@@ -11,7 +11,7 @@ class Game:
     def __init__(self, player_name, rounds):
         self.player_name = player_name
         self.rounds = rounds
-        self.current_round = 0
+        self.current_round = 1
         self.score = {"computer": 0, "player": 0}
         
     def increment_current_round(self):
@@ -21,7 +21,7 @@ class Game:
         return self.current_round
     
     def increment_score(self, who = "computer"):
-        self.scores[who] = self.scores[who] + 1
+        self.score[who] = self.score[who] + 1
 
     def get_score(self):
         return self.score
@@ -40,12 +40,12 @@ def get_rounds():
     rounds = 0
 
     while True:
-        rounds = input('Please enter a number of rounds (max. 15): ')
+        rounds = input('Please enter a number of rounds (mix: 1, max: 15): ')
     
         if not rounds.isnumeric():
             print(f"Invalid input: A number must be entered. You entered: {rounds}")
-        elif int(rounds) > 15:
-            print(f"The number of rounds must be less than 15. You set {rounds}")
+        elif int(rounds) > 15 or int(rounds) == 0:
+            print(f"The number of rounds must be less than 15 and greater than 0. You set {rounds}")
         else:
             print(f"Number of rounds: {rounds}")
             break
@@ -60,10 +60,24 @@ def get_random_element():
     """
     return random.choice(tuple(ALLOWED_ELEMENTS))
 
+def get_winner(computer_element, player_element):
+    """
+    Determine the winner of the game by passing the two elements from the player and the computer
+    It returns who is the winner or "equal" instead.
+    """
 
+    game = (computer_element + player_element).upper()
+    
+    if game == "RP" or  game == "PS" or game == "SR":
+        return "player"
+    elif game == "PR" or game == "SP" or game == "RS":
+        return "computer"
+    else:
+        return "equal"
+    
 
 # ---------------------------
-# ------ Draw function ------
+# ------ Print functions ------
 # ---------------------------
 
 def print_element(element, name):
@@ -86,7 +100,7 @@ def print_element(element, name):
         print('--------X----X---------')
         print('--------XXXXXX---------')
     else:
-        print(f"{name}: SCISSOR.......")
+        print(f"{name}: SCISSORS......")
         print('------X-------X--------')
         print('-------X-----X---------')
         print('--------X---X----------')
@@ -94,6 +108,10 @@ def print_element(element, name):
         print('-------XX---XX---------')
         print('-------XX---XX---------')
         print('-------XX---XX---------')
+
+def print_final_score(game):
+    print('-------XX---XX---------')
+
 
 
 # --------------------------
@@ -106,7 +124,7 @@ def play(game):
     """
     
 
-    while True:
+    while int(game.current_round) <= int(game.rounds):
         print('|||||||||||||||||||||||||||||||')
         print("ROUND: ", game.get_current_round())
         score = game.get_score()
@@ -118,15 +136,20 @@ def play(game):
 
         if player_element not in ALLOWED_ELEMENTS:
             print(f"|-|ERROR|-| Invalid character: {player_element}")
-            # break
         else:
             print_element(player_element, game.player_name)
-            game.increment_current_round()
             computer_element = get_random_element()
             print_element(computer_element, "computer")
-            
 
+            result = get_winner(computer_element, player_element)
+            if result == "equal":
+                print("Who win? Draw!")
+            else:
+                print(f"Who win? {'computer' if result == 'computer' else game.player_name }")
+                game.increment_score(result)
+                game.increment_current_round()
 
+    print_final_score(game)       
 
 
 
