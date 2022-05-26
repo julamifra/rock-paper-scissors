@@ -1,6 +1,10 @@
+"""
+Import random library
+"""
 import random
 
 ALLOWED_ELEMENTS = ["r", "p", "s", "R", "P", "S"]
+
 
 class Game:
     """
@@ -14,20 +18,18 @@ class Game:
         self.rounds = rounds
         self.current_round = 1
         self.score = {"computer": 0, "player": 0}
-        
+
     def increment_current_round(self):
         """
         Increment by one the current number of rounds
         """
         self.current_round = self.current_round + 1
 
-    
     def increment_score(self, who="computer"):
         """
         Increment the either the player score or the computer score
         """
         self.score[who] = self.score[who] + 1
-
 
 
 # -------------------------------
@@ -46,7 +48,7 @@ def get_rounds():
 
     while True:
         rounds = input('Please enter a number of rounds (mix: 1, max: 15):\n')
-    
+
         if not rounds.isnumeric():
             print(f"Invalid input: A number must be entered. You entered: {rounds}")
         elif int(rounds) > 15 or int(rounds) == 0:
@@ -54,9 +56,7 @@ def get_rounds():
         else:
             print(f"Number of rounds: {rounds}")
             break
-        
     return rounds
-
 
 
 def get_random_element():
@@ -65,21 +65,23 @@ def get_random_element():
     """
     return random.choice(tuple(ALLOWED_ELEMENTS))
 
+
 def get_winner(computer_element, player_element):
     """
-    Determine the winner of the game by passing the two elements from the player and the computer
+    Determine the winner of the game by passing the two elements from
+    the player and the computer.
     It returns who is the winner or "equal" instead.
     """
 
     game = (computer_element + player_element).upper()
-    
-    if game == "RP" or  game == "PS" or game == "SR":
+
+    if game == "RP" or game == "PS" or game == "SR":
         return "player"
     elif game == "PR" or game == "SP" or game == "RS":
         return "computer"
     else:
         return "equal"
-    
+
 
 # ---------------------------
 # ------ Print functions ------
@@ -132,19 +134,19 @@ def print_final_score(game):
     print('|||||||||||||||||||||||||||||||')
 
 
-
-
 # --------------------------
 # ----- Main functions -----
 # --------------------------
 
+
 def play(game):
     """
-    By receieving the game instance as a parameter, this function start to play to the game.
-    The while loop finishes when it's been iterated the numbers of rounds specified in the class attribute.
+    By receieving the game instance as a parameter, this function start
+    to play to the game.
+    The while loop finishes when it's been iterated the numbers of
+    rounds specified in the class attribute.
     Once the loop is done, the print_final_score function is called.
     """
-    
 
     while int(game.current_round) <= int(game.rounds):
         print('|||||||||||||||||||||||||||||||')
@@ -173,7 +175,6 @@ def play(game):
     print_final_score(game)
 
 
-
 def main():
     """
     Inialize the game to start playing.
@@ -193,14 +194,13 @@ def main():
         try:
             player_name = input('Please enter your name:\n')
             print("Username: ", player_name)
-            
+
             if len(player_name) > 15:
                 raise ValueError("Maximum characteres for the username is 15")
             else:
                 break
-        except ValueError as e:
-            print(f"Invalid data: {e}, please try again.\n")
-
+        except ValueError as err:
+            print(f"Invalid data: {err}, please try again.\n")
 
     rounds = get_rounds()
 
@@ -209,7 +209,6 @@ def main():
     print(f"Hello {player_name}! Let's start!")
     print('-------------------------------')
     play(game)
-
 
 
 main()
