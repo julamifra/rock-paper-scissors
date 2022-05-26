@@ -189,8 +189,19 @@ def main():
     print('GOOD LUCK!')
     print('-------------------------------')
 
-    player_name = input('Please enter your name:\n')
-    print("Username: ", player_name)
+    while True:
+        try:
+            player_name = input('Please enter your name:\n')
+            print("Username: ", player_name)
+            
+            if len(player_name) > 15:
+                raise ValueError("Maximum characteres for the username is 15")
+            else:
+                break
+        except ValueError as e:
+            print(f"Invalid data: {e}, please try again.\n")
+
+
     rounds = get_rounds()
 
     game = Game(player_name, rounds)
