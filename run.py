@@ -165,7 +165,6 @@ def play(game):
             result = get_winner(computer_element, player_element)
             if result == "equal":
                 print("Who win? Draw!")
-                # break
             else:
                 print(f"Who win? {'computer' if result == 'computer' else game.player_name }")
                 game.increment_score(result)
