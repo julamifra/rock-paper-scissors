@@ -4,8 +4,9 @@ ALLOWED_ELEMENTS = ["r", "p", "s", "R", "P", "S"]
 
 class Game:
     """
-    Dashboard class. It sets the initial dashboard by choosing the rounds
-    number and manage the elements (rock, paper, scissors) display
+    Dashboard class. It sets the initial dashboard by choosing the number
+    of rounds, the player name.
+    It contains functions to increment the current round and the score
     """
 
     def __init__(self, player_name, rounds):
@@ -15,27 +16,31 @@ class Game:
         self.score = {"computer": 0, "player": 0}
         
     def increment_current_round(self):
+        """
+        Increment by one the current number of rounds
+        """
         self.current_round = self.current_round + 1
 
-    def get_current_round(self):
-        return self.current_round
     
-    def increment_score(self, who = "computer"):
+    def increment_score(self, who="computer"):
+        """
+        Increment the either the player score or the computer score
+        """
         self.score[who] = self.score[who] + 1
 
-    def get_score(self):
-        return self.score
 
 
-# --------------------------
-# -------- Otheerrr --------
-# --------------------------
+# -------------------------------
+# -------- Get functions --------
+# -------------------------------
 
 def get_rounds():
     """
     Get number of rounds input from the user.
     Validate isnumber() and greater than 15.
     Return the number of rounds.
+
+    Returns: It returns the number of rounds the user has entered
     """
     rounds = 0
 
@@ -81,6 +86,9 @@ def get_winner(computer_element, player_element):
 # ---------------------------
 
 def print_element(element, name):
+    """
+    It prints out the element and the user name passed as parameter
+    """
     if element in ["r", "R"]:
         print(f"{name}: ROCK..........")
         print('---------XXX-----------')
@@ -109,8 +117,10 @@ def print_element(element, name):
         print('-------XX---XX---------')
         print('-------XX---XX---------')
 
+
 def print_final_score(game):
     """
+    It prints out the Score of the game (passed as parameter)
     """
 
     computer_score = game.score['computer']
@@ -130,15 +140,16 @@ def print_final_score(game):
 
 def play(game):
     """
-
+    By receieving the game instance as a parameter, this function start to play to the game.
+    The while loop finishes when it's been iterated the numbers of rounds specified in the class attribute.
+    Once the loop is done, the print_final_score function is called.
     """
     
 
     while int(game.current_round) <= int(game.rounds):
         print('|||||||||||||||||||||||||||||||')
-        score = game.get_score()
         print(f"SCORE -> Computer: {game.score['computer']}, {game.player_name}: {game.score['player']}")
-        print("NEXT ROUND: ", game.get_current_round())
+        print("NEXT ROUND: ", game.current_round)
         print('|||||||||||||||||||||||||||||||')
 
         print('Choose one element to play: R(rock), P(paper) or S(scissor)')
@@ -167,7 +178,8 @@ def play(game):
 def main():
     """
     Inialize the game to start playing.
-    Run all program functions
+    Run all program functions.
+    Here, the users input their name and the number of rounds the want to play
     """
     print('-------------------------------')
     print('Welcome to ROCK-PAPER-SICCORS!!')
