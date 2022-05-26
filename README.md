@@ -1,11 +1,18 @@
 # Rock-Paper-Scissors
 
+Rock-Paper-Scissors is a Python terminal game. I's been deployed on Heroki and runs in the Code Institute mock terminal.
 
+Within this terminal, once users have run the program, they will can play to the clasic Rock, Paper and Scissors game against the computer.
 
-![Responsice Mockup]()
+Users must enter their user name and the number of rounds they want to play before start the game.
+
+After playing the chosen rounds ny the user, the final score will be printed out with the due winner. In order to restart the game, the program must be re-run again.
+
+![Responsice Mockup](./docs/wirefram_rock_paper_scissors.JPG)
 
 # Table of Contents
 
+- [How to play](#how-to-play)
 - [User Stories](#user-stories)
 - [Features](#features)
 - [Future features](#future-features)
@@ -16,9 +23,14 @@
 - [Deployment](#deployment)
 - [Credits](#credits)
 
+## How to play
+
 ## User Stories
 
-1. As an user I want to 
+1. As an user I want to input my name and number of rounds I like to play before start the game.
+2. As an user I want to see my score and who wins en each round.
+3. As an user I want to see a sort of draw of the different elements (Rock, Paper and Scissors) when are selected by the user and the computer.
+4. As an user I want to see the final score and who has won once the game is over.
 
 ## Features
 
