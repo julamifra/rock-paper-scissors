@@ -45,7 +45,7 @@ def get_rounds():
     rounds = 0
 
     while True:
-        rounds = input('Please enter a number of rounds (mix: 1, max: 15): ')
+        rounds = input('Please enter a number of rounds (mix: 1, max: 15):\n')
     
         if not rounds.isnumeric():
             print(f"Invalid input: A number must be entered. You entered: {rounds}")
@@ -153,7 +153,7 @@ def play(game):
         print('|||||||||||||||||||||||||||||||')
 
         print('Choose one element to play: R(rock), P(paper) or S(scissor)')
-        player_element = input('Select an element: ')
+        player_element = input('Select an element:\n')
 
         if player_element not in ALLOWED_ELEMENTS:
             print(f"|-|ERROR|-| Invalid character: {player_element}")
@@ -190,7 +190,7 @@ def main():
     print('GOOD LUCK!')
     print('-------------------------------')
 
-    player_name = input('Please enter your name: ')
+    player_name = input('Please enter your name:\n')
     print("Username: ", player_name)
     rounds = get_rounds()
 
