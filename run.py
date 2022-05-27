@@ -13,15 +13,15 @@ class Game:
     It contains functions to increment the current round and the score
     """
 
-    def __init__(self, player_name, rounds):
+    def __init__(self, player_name, max_rounds):
         self.player_name = player_name
-        self.rounds = rounds
+        self.max_rounds = max_rounds
         self.current_round = 1
         self.score = {"computer": 0, "player": 0}
 
     def increment_current_round(self):
         """
-        Increment by one the current number of rounds
+        Increment by one the current number of current_round
         """
         self.current_round = self.current_round + 1
 
@@ -148,7 +148,7 @@ def play(game):
     Once the loop is done, the print_final_score function is called.
     """
 
-    while int(game.current_round) <= int(game.rounds):
+    while int(game.current_round) <= int(game.max_rounds):
         print('|||||||||||||||||||||||||||||||')
         print(f"SCORE -> Computer: {game.score['computer']}, {game.player_name}: {game.score['player']}")
         print("NEXT ROUND: ", game.current_round)
