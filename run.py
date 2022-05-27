@@ -34,7 +34,7 @@ class Game:
         Increment the either the player score or the computer score
         """
         if (who != "computer" and who != "player"):
-            raise ValueError("'Who' paramenter must be: 'player' or 'computer', only")
+            raise ValueError("'Who' must be: 'player' or 'computer'")
 
         self.score[who] = self.score[who] + 1
 
@@ -57,9 +57,9 @@ def get_rounds():
         rounds = input('Please enter a number of rounds (mix: 1, max: 15):\n')
 
         if not rounds.isnumeric():
-            print(f"Invalid input: A number must be entered. You entered: {rounds}")
+            print("Invalid input: A number must be entered.")
         elif int(rounds) > 15 or int(rounds) == 0:
-            print(f"The number of rounds must be less than 15 and greater than 0. You set {rounds}")
+            print("Number of rounds: less than 15, greater than 0.")
         else:
             print(f"Number of rounds: {rounds}")
             break
@@ -135,9 +135,13 @@ def print_final_score(game):
     computer_score = game.score['computer']
     player_score = game.score['player']
 
+    name = game.player_name
+    p_score = int(player_score)
+    c_score = int(computer_score)
+
     print('|||||||||||||||||||||||||||||||')
     print(f"FINAL SCORE -> Computer: {computer_score}, You: {player_score}")
-    print(f"{game.player_name if int(player_score) > int(computer_score) else 'Computer'} win!! ")
+    print(f"{name if p_score > c_score else 'Computer'} win!! ")
     print('|||||||||||||||||||||||||||||||')
 
 
@@ -157,7 +161,10 @@ def play(game):
 
     while int(game.current_round) <= int(game.max_rounds):
         print('|||||||||||||||||||||||||||||||')
-        print(f"SCORE -> Computer: {game.score['computer']}, {game.player_name}: {game.score['player']}")
+        c_score = game.score['computer']
+        name = game.player_name
+        p_score = game.score['player']
+        print(f"SCORE -> Computer: {c_score}, {name}: {p_score}")
         print("NEXT ROUND: ", game.current_round)
         print('|||||||||||||||||||||||||||||||')
 
@@ -175,7 +182,11 @@ def play(game):
             if result == "equal":
                 print("Who win? Draw!")
             else:
-                print(f"Who win? {'computer' if result == 'computer' else game.player_name }")
+                player = (
+                    'computer' if result == 'computer' else game.player_name
+                    )
+
+                print(f"Who win? {player}")
                 game.increment_score(result)
                 if int(game.current_round) == int(game.max_rounds):
                     break
