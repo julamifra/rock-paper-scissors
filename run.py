@@ -23,6 +23,10 @@ class Game:
         """
         Increment by one the current number of current_round
         """
+
+        if(self.current_round > int(self.max_rounds)):
+            raise ValueError("current round cannot go beyond the max rounds")
+        
         self.current_round = self.current_round + 1
 
     def increment_score(self, who="computer"):
@@ -148,7 +152,10 @@ def play(game):
     Once the loop is done, the print_final_score function is called.
     """
 
+    
     while int(game.current_round) <= int(game.max_rounds):
+        print("current round: ", game.current_round)
+        print("max round: ", game.max_rounds)
         print('|||||||||||||||||||||||||||||||')
         print(f"SCORE -> Computer: {game.score['computer']}, {game.player_name}: {game.score['player']}")
         print("NEXT ROUND: ", game.current_round)
@@ -170,7 +177,10 @@ def play(game):
             else:
                 print(f"Who win? {'computer' if result == 'computer' else game.player_name }")
                 game.increment_score(result)
-                game.increment_current_round()
+                if(int(game.current_round) == int(game.max_rounds)):
+                    break
+                else:
+                    game.increment_current_round()
 
     print_final_score(game)
 
