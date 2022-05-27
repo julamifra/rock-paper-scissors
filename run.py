@@ -193,11 +193,13 @@ def main():
     while True:
         try:
             player_name = input('Please enter your name:\n')
-            print("Username: ", player_name)
 
+            if len(player_name) < 3:
+                raise ValueError("At least 3 characteres are required")
             if len(player_name) > 15:
                 raise ValueError("Maximum characteres for the username is 15")
             else:
+                print("Username: ", player_name)
                 break
         except ValueError as err:
             print(f"Invalid data: {err}, please try again.\n")
