@@ -27,9 +27,9 @@ After playing the chosen rounds by the user, the final score will be printed out
 Rock, Paper and Scissor is the classic game everyone knows. Both players, at the same time, choose one of these 3 elements. Rock beats Scissor, Scissors beats Paper, and Paper beats Rocks.
 
 In this version, the user enters their name and the number of rounds they like to play before starting the game.
-Later on, the user must choose an element in every round, in order to play against the computer. By entering a 'r'/'R' in the shown input in the terminal, the Rock element is selected. A 'p'/'P' will select the Paper element and 's'/'S' will select the Scissor element.
+Later on, the user must choose an element in each round, in order to play against the computer. By entering a 'r'/'R' in the input displayed on the terminal, the Rock element is selected. A 'p'/'P' will select the Paper element and 's'/'S' will select the Scissor element.
 
-In each round, the current round and the score will be shown. Once the game is over, the final Score nad the winner will be printed out. To play again the game, the user must re-run the program.
+In each round, the current round and the score will be shown. Once the game is over, the final Score and the winner will be printed out. To play the game again, the user must re-run the program.
 
 ## User Stories
 
