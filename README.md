@@ -94,10 +94,9 @@ Two methods are also created in order to increment both variables mentioned befo
 
 ## Technologies
 
-- **Python** 
-- **GitHub**:
+- **Python** : it's a hig-level, interpreted programming language. Its design philosophy emphasizes code readability with the use of significant indentatition.
 - **GitPod**: this tool has been chosen as the IDE of this project. It is a cloud development environment accessible via a browser, that can be run directly from the github repository.
-- **Heroku**:
+- **Heroku**: It is a cloud platform as a service supporting several programming languages
 
 ## Testing
 
@@ -106,24 +105,60 @@ Two methods are also created in order to increment both variables mentioned befo
 - In order to pass all the User Stories tests, these are the steps that have been followed to test them:
 
   - User Story number 1:
+    - The user must enter the user name input. This data must be between 1 and 15 characteres
+    - The user must enter the number of rounds in a new input. This data must be a number between 1 and 15. 
 
+    -> **Bugs found:** The user were able to enter an empty name. In order to fix this, a new validation has been done while entering the username data.
+  
+  - User Story number 2:
+    - First print must show the current score of the game
+    - A seccond print must give the current round.
+    
+    -> **Bugs found:** No bugs were found
+  
+  - User Story number 3:
+    - The first print must display the chosen user element, with their name and the chosen element drawn.
+    - The second print must display the chosen element by the computer.
+    - A final message must appear, saying who has win that round.
 
-  -> **Bugs found:** The user were able to enter an empty name. In order to fix this, a new validation has been done while entering the username
+    -> **Bugs found:** No bugs were found
+  
+  - User Story number 4:
+    - One first print must show the final score of the game
+    - A second print must show who has win the game.
+
+    -> **Bugs found:** No bugs were found
+
 
 
 ### Code validation
 
-- **Python:**
-  ![]()
+- In order to validate the code, the tool has been used is [PEP8 Python Validator](http://pep8online.com/). After testing the code, the following are the errors found:
+
+  ![PEP8 Python validator](/docs/python_validator.PNG)
+
+  All the errors encountered were solved by refactoring the specified lines.
+  The validator was run again with the refactored code and no errors were found.
 
 
 ## Deployment
+
+- The application has been deployed in Heroku. These are the steps that have been followd to deploy rock-paper-scissors:
+  - First, sign up a new account in Heroku.
+  - Once the account has been created, create a new app within Heroku (it gives us 5 free applications to create)
+  - In this app, install two buildpacks in the settings secction: heroku/python and heroku/nodejs. These packs must be installed in that order.
+  - Then, in the gitpod terminal of our code, run the following command: heroku_config. In here, enter the API key that is in the API Key section within Heroku.
+  - After this, enter this command: **heroku git:remote -a <app_name>'. In the <app_name>** parameter, enter the name of the application has just been created.
+  - Then, run this command if applicable: **git add . && git commit -m "Deploy to Heroku"**
+  - Finally, run this two commands: **git push origin main** and **git push heroku main**.
+  - If you get prompted to log in at any point, enter the heroku username and the API key.
 
 
 
 ## Credits
 
+I like to thank my tutor, Rohit, for all the recommendations he has given me
 
 ### Content and Media
 
-- 
+- Tips from [W3Schools](https://www.w3schools.com/) and [Stack Overflow](https://stackoverflow.com/).
