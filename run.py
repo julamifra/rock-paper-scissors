@@ -156,8 +156,6 @@ def play(game):
     """
 
     while int(game.current_round) <= int(game.max_rounds):
-        print("current round: ", game.current_round)
-        print("max round: ", game.max_rounds)
         print('|||||||||||||||||||||||||||||||')
         print(f"SCORE -> Computer: {game.score['computer']}, {game.player_name}: {game.score['player']}")
         print("NEXT ROUND: ", game.current_round)
